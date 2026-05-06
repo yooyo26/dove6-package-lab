@@ -1,0 +1,20 @@
+[Unit]
+Description=Dove6 Passenger Information Display
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=dove6
+Group=dove6
+WorkingDirectory=/opt/dove6
+ExecStart=/opt/dove6/bin/start-dove6
+Restart=always
+RestartSec=3
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

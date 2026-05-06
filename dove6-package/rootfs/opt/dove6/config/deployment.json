@@ -1,0 +1,7 @@
+{
+  "deployment_id": "dove6-lab",
+  "operator_short_name": "LAB",
+  "server_base_url": "http://127.0.0.1:8080/v0",
+  "primary_locale": "fr",
+  "supported_locales": ["fr", "ar", "en"]
+}

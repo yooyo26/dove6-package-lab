@@ -1,0 +1,33 @@
+#!/bin/sh
+set -eu
+
+DOVE6_HOME="/opt/dove6"
+DOVE6_APP="$DOVE6_HOME/app"
+DOVE6_BIN="$DOVE6_APP/dove6_client"
+DOVE6_LIB="$DOVE6_APP/lib"
+
+cd "$DOVE6_APP"
+
+echo "Starting Dove6 from $DOVE6_APP"
+
+if [ ! -x "$DOVE6_BIN" ]; then
+  echo "ERROR: Dove6 executable not found or not executable: $DOVE6_BIN"
+  exit 1
+fi
+
+if [ ! -d "$DOVE6_LIB" ]; then
+  echo "ERROR: Dove6 library directory not found: $DOVE6_LIB"
+  exit 1
+fi
+
+export LD_LIBRARY_PATH="$DOVE6_LIB:${LD_LIBRARY_PATH:-}"
+
+# Temporary lab display settings.
+# These allow the systemd service to reach the current desktop session.
+export DISPLAY=":0"
+export WAYLAND_DISPLAY="wayland-0"
+export XDG_SESSION_TYPE="wayland"
+export XDG_RUNTIME_DIR="/run/user/1000"
+export XAUTHORITY="/run/user/1000/.mutter-Xwaylandauth.NKDKO3"
+
+exec "$DOVE6_BIN"

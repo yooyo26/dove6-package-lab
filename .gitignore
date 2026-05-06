@@ -1,0 +1,18 @@
+# Flutter/Linux runtime bundles are large.
+# Do not store them in GitHub.
+dove6-package/flutter-bundle/dove6_client
+dove6-package/flutter-bundle/lib/
+dove6-package/flutter-bundle/data/
+
+dove6-package/rootfs/opt/dove6/app/
+dove6-package/rootfs/opt/dove6/lib/
+dove6-package/rootfs/opt/dove6/data/
+
+# Package archives
+*.tar.gz
+*.tgz
+*.zip
+
+# Local/temp files
+*.log
+.DS_Store
