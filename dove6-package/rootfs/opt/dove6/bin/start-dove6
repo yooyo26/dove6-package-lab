@@ -22,12 +22,15 @@ fi
 
 export LD_LIBRARY_PATH="$DOVE6_LIB:${LD_LIBRARY_PATH:-}"
 
-# Temporary lab display settings.
-# These allow the systemd service to reach the current desktop session.
+# BT06 X11 display settings.
 export DISPLAY=":0"
-export WAYLAND_DISPLAY="wayland-0"
-export XDG_SESSION_TYPE="wayland"
+export XDG_SESSION_TYPE="x11"
 export XDG_RUNTIME_DIR="/run/user/1000"
-export XAUTHORITY="/run/user/1000/.mutter-Xwaylandauth.NKDKO3"
+export XAUTHORITY="/run/user/1000/gdm/Xauthority"
+
+# Kiosk display power settings.
+xset s off || true
+xset -dpms || true
+xset s noblank || true
 
 exec "$DOVE6_BIN"
